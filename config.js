@@ -4,7 +4,7 @@
 */
 window.WE_CONFIG = {
   // URL deiner Google-Apps-Script-Web-App (siehe README). Leer = Demo-Modus, nichts wird gespeichert.
-  apiUrl: "",
+  apiUrl: "https://script.google.com/macros/s/AKfycbzbGbqAmJ-lQ2nMY312_oU1h-NB-Nrj6_vo3FJYt_Qpwrlr_wDzSapm5PUlldvKqYns/exec",
 
   host: "Lucas",
 
