@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Weihnachtsessen 2026</title>
+<meta name="description" content="Ein langer Tisch, mehrere Gänge, zu jedem der passende Wein. Du bist eingeladen.">
+<meta property="og:title" content="Weihnachtsessen 2026 · Du bist eingeladen">
+<meta property="og:description" content="Ein langer Tisch, mehrere Gänge, zu jedem der passende Wein. Zwischen den Jahren, 28. bis 30. Dezember.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1613">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%238e2236'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='30' fill='%23f3c9d0'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- ================= INTRO: break the seal ================= -->
+<div class="intro" id="intro" hidden>
+  <div class="intro-glow"></div>
+  <p class="intro-for" id="introFor">Eine Einladung</p>
+  <button class="intro-seal" id="sealBtn" type="button" aria-label="Siegel brechen und Einladung öffnen">
+    <span class="half half-l"><svg viewBox="0 0 200 200"><use href="#sealArt"/></svg></span>
+    <span class="half half-r"><svg viewBox="0 0 200 200"><use href="#sealArt"/></svg></span>
+  </button>
+  <p class="intro-hint">Siegel antippen zum Öffnen</p>
+  <button class="intro-quiet" id="sealQuiet" type="button">Ohne Musik öffnen</button>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="waxg" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#c4475d"/><stop offset=".55" stop-color="#8e2236"/><stop offset="1" stop-color="#4d0f1c"/>
+    </radialGradient>
+    <g id="sealArt">
+      <path fill="url(#waxg)" d="M100 22c13 0 18 8 28 10s19-3 27 6 3 18 7 27 12 14 12 28-8 18-10 28 3 19-6 27-18 3-27 7-14 12-28 12-18-8-28-10-19 3-27-6-3-18-7-27-12-14-12-28 8-18 10-28-3-19 6-27 18-3 27-7 14-12 28-12z"/>
+      <circle cx="100" cy="100" r="52" fill="none" stroke="#5c1222" stroke-width="2.5" opacity=".6"/>
+      <circle cx="100" cy="100" r="45" fill="none" stroke="#e07a8c" stroke-width="1" opacity=".35"/>
+      <text x="100" y="121" text-anchor="middle" font-family="Bodoni Moda, Georgia, serif" font-style="italic" font-size="62" fill="#f3c9d0" opacity=".92">L</text>
+      <text x="100" y="146" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="3" fill="#f3c9d0" opacity=".6">MMXXVI</text>
+    </g>
+  </defs>
+</svg>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner" id="heroInner">
+    <div class="topline rise d1"><span id="topFor">Einladung</span><span>Ein Abend in mehreren Gängen</span></div>
+
+    <h1 class="title" aria-label="Weihnachtsessen 2026">
+      <span class="l1 rise d2" data-split>Weihnachts</span>
+      <span class="l2 rise d3"><span data-split>essen</span><span class="yr">2026</span></span>
+    </h1>
+
+    <p class="lede rise d4">Ein langer Tisch, mehrere Gänge, zu jedem der passende Wein. Und vor allem: <em>ihr alle.</em></p>
+
+    <dl class="facts rise d5">
+      <div><dt>Was</dt><dd>Mehrgängiges Menü mit Weinbegleitung</dd></div>
+      <div><dt>Wann</dt><dd id="factWhen">Zwischen den Jahren, 28. bis 30. Dezember</dd></div>
+      <div><dt id="factCountLabel">Abstimmung</dt><dd id="factCount" class="tabular">läuft</dd></div>
+    </dl>
+
+    <div class="hero-actions rise d5">
+      <a class="btn" href="#tafel">Platz nehmen</a>
+      <a class="scrollcue" href="#aperitif"><i></i>Erst mal lesen</a>
+    </div>
+
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs><path id="circ" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
+        <g class="ring">
+          <text font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="4.4" fill="#d8b673">
+            <textPath href="#circ">LUCAS LÄDT EIN · ZWISCHEN DEN JAHREN · LUCAS LÄDT EIN · 2026 ·</textPath>
+          </text>
+        </g>
+        <g transform="translate(30 30) scale(.7)" class="wax"><use href="#sealArt"/></g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= APERITIF ================= -->
+<section id="aperitif">
+  <div class="wrap">
+    <div class="course"><span>Aperitif</span><b>Die Einladung</b></div>
+    <div class="letter-grid">
+      <h2 class="reveal">Wie jedes Jahr, nur noch ein bisschen besser.</h2>
+      <div class="letter reveal">
+        <p id="salutation">Liebe Freundinnen und Freunde, bevor dieses Jahr zu Ende geht, möchte ich euch noch einmal alle an einem Tisch haben.</p>
+        <p>Wie immer gibt es ein Menü in mehreren Gängen, zu jedem Gang den passenden Wein, und einen Abend, der so lange dauert, wie er eben dauert. Bringt Hunger mit, gute Laune und am besten keine Pläne für danach. Um alles andere kümmere ich mich.</p>
+        <p>Diesmal treffen wir uns zwischen den Jahren. Welcher der drei Abende es wird, entscheidet ihr weiter unten an der Tafel. Das Menü verrate ich nach und nach hier auf dieser Seite, also schaut ab und zu vorbei.</p>
+        <div class="sign">Lucas<small>Euer Gastgeber</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HAUPTGANG ================= -->
+<section id="menu" class="menu-section">
+  <div class="wrap">
+    <div class="course"><span>Hauptgang</span><b>Die Speisefolge</b></div>
+    <div class="menu-head">
+      <h2 class="reveal" id="menuTitle">Das Menü ist noch versiegelt.</h2>
+      <p id="menuLead">Gänge und Weine werden hier nach und nach enthüllt. Wie viele Gänge es werden, bleibt vorerst mein Geheimnis.</p>
+    </div>
+
+    <div class="card reveal" id="menuCard">
+      <div class="stamp" id="menuStamp">Streng geheim</div>
+      <p class="card-title">Menu</p>
+      <p class="card-sub">Weihnachtsessen 2026 · mit Weinbegleitung</p>
+      <div id="dishes"></div>
+      <div class="menu-note"><span>Gänge: <b id="courseCount">?</b></span><span>Weine: <b>einer pro Gang</b></span><span>Enthüllt: <b id="revealCount">0</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DESSERT: die Tafel ================= -->
+<section id="tafel" class="tafel-section">
+  <div class="wrap">
+    <div class="course"><span>Dessert</span><b>Termin und Zusage</b></div>
+    <div class="tafel-head">
+      <h2 class="reveal">Nimm Platz an der Tafel.</h2>
+      <p>Sag mir, welche Abende dir passen. Jede Antwort deckt einen Platz ein, und der Abend, der den meisten passt, gewinnt.</p>
+    </div>
+
+    <div class="demo-banner" id="demoBanner" hidden>Vorschau-Modus: Das Backend ist noch nicht verbunden. Antworten werden nur in diesem Browser gespeichert.</div>
+
+    <!-- the long table -->
+    <div class="table-stage reveal">
+      <div class="table-bar">
+        <div class="table-filter" id="tableFilter" role="tablist" aria-label="Tafel nach Abend anzeigen"></div>
+        <div class="table-meta tabular" id="tableMeta">Plätze werden geladen</div>
+      </div>
+      <div class="table-wrap" id="tableWrap"><svg id="tableSvg" role="img" aria-label="Die Tafel mit allen Gästen"></svg></div>
+    </div>
+
+    <div class="poll-grid">
+      <!-- the vote -->
+      <form class="rsvp" id="rsvp" novalidate>
+        <h3 id="formTitle">Deine Antwort</h3>
+        <div class="field">
+          <label for="fName">Dein Name</label>
+          <input id="fName" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="So, wie dich alle nennen" required>
+        </div>
+
+        <fieldset class="field">
+          <legend>Welche Abende passen dir?</legend>
+          <div class="date-votes" id="dateVotes"></div>
+          <button class="linkish" type="button" id="allYes">Mir passt jeder Abend</button>
+        </fieldset>
+
+        <div class="field">
+          <label for="fDiet">Unverträglichkeiten oder No-Gos beim Essen <span class="private">sieht nur Lucas</span></label>
+          <input id="fDiet" name="diet" type="text" maxlength="300" placeholder="z. B. keine Pilze, laktosefrei">
+        </div>
+        <div class="field">
+          <label for="fMsg">Noch was an Lucas? <span class="private">sieht nur Lucas</span></label>
+          <textarea id="fMsg" name="message" rows="2" maxlength="500" placeholder="Optional"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="fWebsite">Website</label><input id="fWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+        <div class="form-foot">
+          <button class="btn" type="submit" id="submitBtn">Platz nehmen</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <!-- the tally on a calendar -->
+      <div class="tally">
+        <div class="cal">
+          <div class="cal-head"><strong>Dezember</strong><span>2026</span></div>
+          <div class="cal-grid" id="cal"></div>
+          <div class="cal-legend"><span><i class="sw cand"></i>Zur Wahl</span><span><i class="sw hol"></i>Feiertage</span></div>
+        </div>
+        <div class="tally-rows" id="tallyRows"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIGESTIF ================= -->
+<section id="prost" class="toast-section">
+  <div class="wrap">
+    <div class="course"><span>Digestif</span><b>Schon mal vorglühen</b></div>
+    <div class="toast-box">
+      <div class="toast-copy">
+        <h2 class="reveal">Bis dahin: auf uns.</h2>
+        <p>Der Abend ist noch ein paar Wochen hin. Anstoßen kann man aber jetzt schon. Ton an, dann klingt es richtig.</p>
+        <button class="btn" id="clink" type="button">Anstoßen</button>
+        <div class="prost-count tabular" id="count" aria-live="polite"></div>
+      </div>
+      <div class="glasses" id="glasses">
+        <svg viewBox="0 0 400 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="wineg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4475d"/><stop offset="1" stop-color="#5a1020"/></linearGradient>
+            <linearGradient id="glassg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f1ece2" stop-opacity=".05"/><stop offset=".3" stop-color="#f1ece2" stop-opacity=".22"/><stop offset="1" stop-color="#f1ece2" stop-opacity=".04"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="200" cy="292" rx="150" ry="6" fill="#000" opacity=".35"/>
+          <g class="glass g-left">
+            <path d="M108 60 C104 120 110 160 150 172 C190 160 196 120 192 60 Z" fill="url(#glassg)" stroke="#f1ece2" stroke-opacity=".55" stroke-width="1.5"/>
+            <path class="wine-fill" d="M111 112 C112 148 124 164 150 170 C176 164 188 148 189 112 Z" fill="url(#wineg)" opacity=".92"/>
+            <path d="M120 72 C118 100 122 130 132 148" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <line x1="150" y1="172" x2="150" y2="282" stroke="#f1ece2" stroke-opacity=".55" stroke-width="3"/>
+            <ellipse cx="150" cy="286" rx="36" ry="6" fill="none" stroke="#f1ece2" stroke-opacity=".55" stroke-width="1.5"/>
+          </g>
+          <g class="glass g-right">
+            <path d="M208 60 C204 120 210 160 250 172 C290 160 296 120 292 60 Z" fill="url(#glassg)" stroke="#f1ece2" stroke-opacity=".55" stroke-width="1.5"/>
+            <path class="wine-fill" d="M211 112 C212 148 224 164 250 170 C276 164 288 148 289 112 Z" fill="url(#wineg)" opacity=".92"/>
+            <path d="M220 72 C218 100 222 130 232 148" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <line x1="250" y1="172" x2="250" y2="282" stroke="#f1ece2" stroke-opacity=".55" stroke-width="3"/>
+            <ellipse cx="250" cy="286" rx="36" ry="6" fill="none" stroke="#f1ece2" stroke-opacity=".55" stroke-width="1.5"/>
+          </g>
+        </svg>
+        <canvas id="sparks"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Weihnachtsessen <strong>2026</strong></span>
+    <span>Gastgeber: <strong>Lucas</strong></span>
+    <span>Fragen? Schreib mir einfach.</span>
+  </div>
+</footer>
+
+<button class="musicbox" id="musicBtn" type="button" aria-pressed="false" aria-label="Spieldose an oder aus">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span class="mb-label">Spieldose</span>
+</button>
+
+<div class="toast-msg" id="toastMsg" role="status" aria-live="polite" hidden></div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
