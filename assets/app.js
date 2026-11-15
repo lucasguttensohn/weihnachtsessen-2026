@@ -331,9 +331,13 @@
   function drawTable() {
     const svg = $("#tableSvg"), vertical = $("#tableWrap").clientWidth < 620;
     svg.innerHTML = "";
-    const A0 = 150, A1 = 900, C = vertical ? 230 : 210;
+    const guests = responses.slice();
+    const n = Math.max(CFG.seats || 8, guests.length);
+    const perTop = Math.ceil(n / 2), perBottom = Math.floor(n / 2), per = perTop;
+    // table length follows the number of seats per side
+    const A0 = 150, A1 = A0 + Math.max(4, per) * 125, C = vertical ? 230 : 210;
     const P = (a, o) => (vertical ? { x: C + o, y: a } : { x: a, y: C + o });
-    svg.setAttribute("viewBox", vertical ? "0 0 460 960" : "0 0 1000 420");
+    svg.setAttribute("viewBox", vertical ? `0 0 460 ${A1 + 60}` : `0 0 ${A1 + 100} 420`);
     const defs = el("defs", {}, svg);
     const rg = el("radialGradient", { id: "candleHalo" }, defs);
     el("stop", { offset: "0", "stop-color": "#f3dfae", "stop-opacity": ".55" }, rg);
@@ -341,9 +345,6 @@
     const cloth = el("linearGradient", { id: "cloth", x1: "0", y1: "0", x2: vertical ? "1" : "0", y2: vertical ? "0" : "1" }, defs);
     el("stop", { offset: "0", "stop-color": "#22392f" }, cloth); el("stop", { offset: ".5", "stop-color": "#284337" }, cloth); el("stop", { offset: "1", "stop-color": "#22392f" }, cloth);
 
-    const guests = responses.slice();
-    let n = Math.max(CFG.seats || 12, guests.length); if (n % 2) n++;
-    const per = n / 2, step = (A1 - A0) / per;
 
     // table + runner
     const t0 = P(A0, -62), t1 = P(A1, 62);
@@ -356,9 +357,9 @@
       el("ellipse", { cx: p.x, cy: p.y, rx: 7, ry: 2.2, fill: "#3f6b55", opacity: ".8", transform: `rotate(${rot} ${p.x} ${p.y})` }, svg);
     }
     // candles
-    const nC = per >= 7 ? 5 : 4;
+    const nC = Math.max(1, per - 1);
     for (let k = 1; k <= nC; k++) {
-      const p = P(A0 + (A1 - A0) * k / (nC + 1), 0);
+      const p = P(A0 + 50 + (A1 - A0 - 50) * k / (nC + 1), 0);
       el("circle", { cx: p.x, cy: p.y, r: 46, fill: "url(#candleHalo)", class: "halo", style: `animation-delay:${k * .37}s` }, svg);
       el("circle", { cx: p.x, cy: p.y, r: 8, fill: "#efe6d2" }, svg);
       el("path", { d: `M${p.x} ${p.y - 13} q5 7 0 11 q-5 -4 0 -11z`, fill: "#ffd98a", class: "flame", style: `animation-delay:${k * .23}s` }, svg);
@@ -373,7 +374,7 @@
     const hs = el("text", { x: hl.x, y: hl.y + 22, "text-anchor": "middle", "font-size": 9.5, "letter-spacing": "1.5", fill: "#93a89d", "font-family": "IBM Plex Mono, monospace" }, svg); hs.textContent = "GASTGEBER";
 
     for (let i = 0; i < n; i++) {
-      const side = i % 2 ? 1 : -1, slot = Math.floor(i / 2), a = A0 + step * (slot + .5);
+      const side = i % 2 ? 1 : -1, slot = Math.floor(i / 2), count = side < 0 ? perTop : perBottom, a = A0 + 50 + (A1 - A0 - 50) * (slot + .5) / count;
       const g = guests[i], vote = g && filter !== "all" ? (g.votes || {})[filter] : null;
       const cls = ["seat"];
       if (g && filter !== "all") cls.push(vote === "y" ? "yes" : vote === "m" ? "maybe" : "off");

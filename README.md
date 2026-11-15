@@ -45,3 +45,14 @@ https://lucasguttensohn.github.io/weihnachtsessen-2026/?fuer=Anna
 - **Termin steht:** in `config.js` z. B. `finalDate: "2026-12-29T19:00"` setzen. Die Abstimmung schließt, oben läuft ein Countdown, die Tafel zeigt die Zusagen für diesen Abend.
 - **Menü enthüllen:** in `config.js` bei `menu` die Felder `dish`, `detail` und `wine` ausfüllen. Leere Gänge bleiben geschwärzt. Mehr Gänge = mehr Einträge.
 - **Ort:** `location` ausfüllen.
+
+## Öffentlich stellen: was sichtbar ist
+
+GitHub Pages braucht im kostenlosen Plan ein öffentliches Repo. Im Code liegen keine Passwörter oder Schlüssel. Sichtbar werden:
+
+- die Web-App-URL in `config.js`. Damit kann jeder Antworten lesen (Name und Terminwahl) und neue abgeben. Das ist bei jeder öffentlichen Einladungsseite so, weil der Browser der Gäste die URL ohnehin kennt.
+- die Commit-Historie. Sie enthält nur GitHub-noreply-Adressen, keine private E-Mail.
+
+Nicht sichtbar: das Google Sheet selbst (nicht freigeben!), Unverträglichkeiten, Nachrichten und die Bearbeitungs-Tokens.
+
+Schutz im Backend: versteckte Bot-Falle, Längenbegrenzung aller Felder, Schutz gegen Formeln im Sheet, höchstens 25 Antworten, Änderungen nur mit dem eigenen Token. Durch `@OnlyCurrentDoc` darf das Skript nur dieses eine Sheet anfassen, nicht dein restliches Drive.

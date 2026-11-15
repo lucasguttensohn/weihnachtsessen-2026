@@ -16,13 +16,13 @@ window.WE_CONFIG = {
   ],
 
   // Bis wann abgestimmt werden soll.
-  voteDeadline: "2026-11-15",
+  voteDeadline: "2026-12-01",
 
   // Sobald der Termin steht: z. B. "2026-12-12T19:00". Dann schließt die Abstimmung und ein Countdown erscheint.
   finalDate: "",
 
-  // Plätze an der Tafel (ohne Gastgeber).
-  seats: 12,
+  // Plätze an der Tafel (ohne Gastgeber). Antworten mehr Leute, wächst die Tafel automatisch mit.
+  seats: 7,
 
   // Ort. Leer lassen, solange er geheim bleiben soll.
   location: "",

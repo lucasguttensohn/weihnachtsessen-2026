@@ -1,3 +1,5 @@
+/** @OnlyCurrentDoc */
+
 /**
  * Weihnachtsessen 2026 · Backend (Google Apps Script + Google Sheet)
  *
@@ -10,7 +12,7 @@
 
 const SHEET_NAME = 'Antworten';
 const HEADERS = ['id', 'token', 'name', 'votes', 'diet', 'message', 'created', 'updated'];
-const MAX_ROWS = 60;               // Schutz gegen Spam
+const MAX_ROWS = 25;               // Schutz gegen Spam
 const VOTE_VALUES = ['y', 'm', 'n'];
 
 function doGet() {
