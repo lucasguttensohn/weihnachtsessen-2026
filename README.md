@@ -56,3 +56,7 @@ GitHub Pages braucht im kostenlosen Plan ein öffentliches Repo. Im Code liegen 
 Nicht sichtbar: das Google Sheet selbst (nicht freigeben!), Unverträglichkeiten, Nachrichten und die Bearbeitungs-Tokens.
 
 Schutz im Backend: versteckte Bot-Falle, Längenbegrenzung aller Felder, Schutz gegen Formeln im Sheet, höchstens 25 Antworten, Änderungen nur mit dem eigenen Token. Durch `@OnlyCurrentDoc` darf das Skript nur dieses eine Sheet anfassen, nicht dein restliches Drive.
+
+## Änderungen sofort sichtbar machen
+
+Browser speichern `config.js`, `app.js` und `style.css` bis zu 10 Minuten zwischen. Wenn du etwas änderst (z. B. das Menü enthüllst), zähle in `index.html` die Versionsnummer `?v=4` bei allen drei Dateien hoch (`?v=5` usw.). Dann holen sich alle Gäste sofort die neue Fassung.
