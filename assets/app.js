@@ -120,9 +120,13 @@
   /* ---------- Hero: snow, candle glow, letters that catch the light ---------- */
   const cv = $("#snow"), ctx2 = cv.getContext("2d");
   let W = 0, H = 0, flakes = [], orbs = [], mx = .5, my = .3, wind = 0, heroVisible = true;
+  // the light follows a real mouse only; on touch screens (and when the mouse leaves) it drifts on its own
+  let tx = .5, ty = .3, mouseIn = false;
   function size() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+    const sameWidth = flakes.length && Math.abs(r.width - W) < 2;
     W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx2.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (sameWidth) return; // only the height changed (mobile address bar): keep snow and lights where they are
     flakes = Array.from({ length: Math.round(Math.min(240, W * H / 6000)) }, () => mk(true));
     orbs = Array.from({ length: 10 }, () => ({ x: Math.random() * W, y: H * (.4 + Math.random() * .65), r: 40 + Math.random() * 120, vx: (Math.random() - .5) * .12, ph: Math.random() * 6.28, c: Math.random() < .6 ? "216,182,115" : "196,71,93" }));
   }
@@ -135,6 +139,8 @@
       g.addColorStop(0, `rgba(${o.c},${a})`); g.addColorStop(1, `rgba(${o.c},0)`);
       ctx2.fillStyle = g; ctx2.beginPath(); ctx2.arc(o.x, o.y, o.r, 0, 6.283); ctx2.fill();
     }
+    if (!mouseIn) { tx = .5 + .28 * Math.sin(t / 5200); ty = .42 + .14 * Math.sin(t / 3700 + 1); }
+    mx += (tx - mx) * .06; my += (ty - my) * .06;
     const gx = mx * W, gy = my * H, cg = ctx2.createRadialGradient(gx, gy, 0, gx, gy, 280);
     cg.addColorStop(0, "rgba(216,182,115,.11)"); cg.addColorStop(1, "rgba(216,182,115,0)");
     ctx2.fillStyle = cg; ctx2.beginPath(); ctx2.arc(gx, gy, 280, 0, 6.283); ctx2.fill();
@@ -160,8 +166,10 @@
     for (const c of txt) { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.setAttribute("aria-hidden", "true"); el.appendChild(s); chars.push(s); }
   });
   let pending = false, px = 0, py = 0;
-  $(".hero").addEventListener("pointermove", (e) => {
-    const r = cv.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width; my = (e.clientY - r.top) / r.height;
+  const hero = $(".hero");
+  hero.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    const r = cv.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; mouseIn = true;
     px = e.clientX; py = e.clientY;
     if (reduce || pending) return; pending = true;
     requestAnimationFrame(() => {
@@ -174,7 +182,10 @@
       }
     });
   });
-  $(".hero").addEventListener("pointerleave", () => chars.forEach((c) => { c.style.transform = ""; c.classList.remove("lit"); }));
+  hero.addEventListener("pointerleave", (e) => {
+    if (e.pointerType !== "mouse") return;
+    mouseIn = false; chars.forEach((c) => { c.style.transform = ""; c.classList.remove("lit"); });
+  });
 
   /* ---------- facts + countdown ---------- */
   const final = CFG.finalDate ? new Date(CFG.finalDate) : null;
