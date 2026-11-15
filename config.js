@@ -10,7 +10,6 @@ window.WE_CONFIG = {
 
   // Kandidaten für den Abend (ISO-Datum). Die Wochentage berechnet die Seite selbst.
   dates: [
-    "2026-12-28",
     "2026-12-29",
     "2026-12-30"
   ],
